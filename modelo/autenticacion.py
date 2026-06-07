@@ -65,3 +65,9 @@ class ModeloAutenticacion:
     def obtener_rol(self, username):
         user = self.obtener_usuario_por_username(username)
         return user["rol"] if user else None
+        
+    def obtener_todos_usuarios(self):
+        return self.usuarios.copy() if self.usuarios else []
+    
+    def hay_usuarios(self):
+        return len(self.usuarios) > 0
