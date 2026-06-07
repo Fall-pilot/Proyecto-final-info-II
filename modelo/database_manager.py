@@ -3,8 +3,8 @@ from datetime import datetime
 
 class DatabaseManager:
     def __init__(self):
-        self.uri = "mongodb+srv://msjs8933_db_user:C30PXM0gjBKbASzb@cluster0.hy12ifc.mongodb.net/?appName=Cluster0"
-        self.db_name = "Biomodal_MSJS"
+        self.uri = "mongodb://localhost:27017/"
+        self.db_name = "ProyectoFinal_Inf2"
         self.client = None
         self.db = None
         self.conectado = False
@@ -16,18 +16,15 @@ class DatabaseManager:
             self.client.admin.command('ping')
             self.db = self.client[self.db_name]
             self.conectado = True
-            print("Conectado a MongoDB exitosamente")
+            print("Conectado a MongoDB Local en puerto 27017")
         except Exception as e:
-            print(f"No se pudo conectar a MongoDB: {e}")
+            print(f"No se pudo conectar a MongoDB Local: {e}")
             print("El historial no se guardará, pero la aplicación funcionará.")
+            print("Asegúrate de que MongoDB esté ejecutándose: 'mongod'")
             self.db = None
             self.conectado = False
     
     def crear_sesion(self, usuario):
-        """
-        Crea un registro único de sesión cuando el usuario hace login
-        Devuelve el _id del registro, o None si no hay conexión
-        """
         if not self.conectado or self.db is None:
             print("Sin conexión a MongoDB - No se creó sesión")
             return None
@@ -48,3 +45,57 @@ class DatabaseManager:
         except Exception as e:
             print(f"Error creando sesión: {e}")
             return None
+    
+    def agregar_accion(self, id_sesion, accion):
+        if not self.conectado or self.db is None or id_sesion is None:
+            return
+        
+        try:
+            from bson import ObjectId
+            self.db["sesiones"].update_one(
+                {"_id": ObjectId(id_sesion)},
+                {"$push": {"acciones": accion}}
+            )
+        except Exception as e:
+            print(f"Error agregando acción: {e}")
+    
+    def guardar_foto_usuario(self, id_sesion, ruta_foto):
+        if not self.conectado or self.db is None or id_sesion is None:
+            return
+        
+        try:
+            from bson import ObjectId
+            self.db["sesiones"].update_one(
+                {"_id": ObjectId(id_sesion)},
+                {"$set": {
+                    "foto_usuario": ruta_foto,
+                    "fecha_foto": datetime.now()
+                }}
+            )
+            print(f"Foto guardada en sesión: {ruta_foto}")
+        except Exception as e:
+            print(f"Error guardando foto: {e}")
+    
+    def obtener_historial(self, usuario=None):
+        if not self.conectado or self.db is None:
+            return []
+        query = {}
+        if usuario:
+            query["usuario"] = usuario
+        
+        try:
+            return list(self.db["sesiones"].find(query).sort("fecha_hora_login", -1))
+        except Exception as e:
+            print(f"Error obteniendo historial: {e}")
+            return []
+    
+    def eliminar_sesion(self, id_sesion):
+        if not self.conectado or self.db is None:
+            return False
+        try:
+            from bson import ObjectId
+            result = self.db["sesiones"].delete_one({"_id": ObjectId(id_sesion)})
+            return result.deleted_count > 0
+        except Exception as e:
+            print(f"Error eliminando sesión: {e}")
+            return False
