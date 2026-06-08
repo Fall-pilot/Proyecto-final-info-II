@@ -10,12 +10,12 @@ class ControladorLogin:
         self._conectar_signales()
 
     def _conectar_signales(self):
-        self.vista.btnIngresar.clicked.connect(self.login)
-        self.vista.btnSalir.clicked.connect(self.vista.close)
+        self.vista.btn_ingresar.clicked.connect(self.login)
+        self.vista.btn_cancelar.clicked.connect(self.vista.close)
 
     def login(self):
-        username = self.vista.lnputUsuario.text()
-        password = self.vista.InputContrasena.text()
+        username = self.vista.id_usuario.text()
+        password = self.vista.password_usuario.text()
 
         exito, usuario = self.modelo_autenticacion.validar_usuario(username, password)
 
