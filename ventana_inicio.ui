@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+    background-color: #f4f6f9;
+}
+
+QLineEdit {
+    border: 2px solid #bdc3c7;
+    border-radius: 8px;
+    padding: 6px;
+    background-color: white;
+    font-size: 14px;
+}
+
+QLineEdit:focus {
+    border: 2px solid #2ecc71; 
+}
+
+
+QLineEdit {
+    border: 2px solid #bdc3c7;
+    border-radius: 8px;
+    padding: 6px;
+    background-color: white;
+    font-size: 14px;
+}
+QLineEdit:focus {
+    border: 2px solid #2ecc71;
+}
+
+
+QPushButton#btn_ingresar {
+    background-color:#72CC21;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 8px;
+}
+
+QPushButton#btn_ingresar:hover {
+    background-color: #AEFA69;
+}
+
+
+QPushButton#btn_cancelar {
+    background-color: #A14830;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 8px;
+}
+
+QPushButton#btn_cancelar:hover {
+    background-color: #E89074; 
+}</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>20</y>
+     <width>301</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vineta BT</family>
+     <pointsize>18</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Super chikas</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="formLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>100</y>
+     <width>281</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_3">
+      <property name="font">
+       <font>
+        <family>Nirmala Text</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Usuario/ID</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="id_usuario"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="font">
+       <font>
+        <family>Nirmala Text</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Contraseña</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="password_usuario">
+      <property name="echoMode">
+       <enum>QLineEdit::Password</enum>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>50</y>
+     <width>301</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Nirmala Text</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Bienvenido, ingresa tus datos para ingresar</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>210</y>
+     <width>160</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QPushButton" name="btn_ingresar">
+      <property name="text">
+       <string>Ingresar</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btn_cancelar">
+      <property name="text">
+       <string>Cancelar</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
