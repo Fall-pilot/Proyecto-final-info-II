@@ -198,6 +198,8 @@ class ControladorCSV:
                 if widget is not None:
                     widget.deleteLater()
 
-    def _actualizar_seleccion(self):
+    def _actualizar_seleccion(self): #me falta terminar esta sección
+        pass
 
     def _actualizar_scatter(self):
+        pass
