@@ -117,8 +117,9 @@ class ControladorImagenes:
             except Exception as e:
                 QMessageBox.critical(self.vista, "Error", str(e))
 
-    def aplicar_zoom(self):
-
+    def aplicar_zoom(self): #Tambien me falta terminar esta sección
+        pass
     def aplicar_segmentacion(self):
-
+        pass
     def aplicar_morfologia(self):
+        pass
